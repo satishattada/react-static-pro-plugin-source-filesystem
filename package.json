@@ -1,6 +1,6 @@
 {
   "name": "react-static-pro-plugin-source-filesystem",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "description": "A React-Static plugin that adds support for creating routes from a directory",
   "main": "node.api.js",
   "repository": "https://github.com/satishattada/react-static-pro.git",
