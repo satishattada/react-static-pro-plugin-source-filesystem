@@ -41,14 +41,7 @@ export default ({
     }
 
     const getGlobFiles = async(path) => {
-      const folderNamedModules = await glob(path, {
-        ignore: {
-          ignored: p => {
-            const pp = p.parent
-            return !(p.isNamed(pp.name + '.tsx') || p.isNamed(pp.name + '.js'))
-          },
-        },
-      })
+      const folderNamedModules = await glob(path);
       console.log('{{{{{{{{{{folderNamedModules}}}}}}}}}}')
       console.log(folderNamedModules)
 
