@@ -115,7 +115,7 @@ export default ({
         });
     }
     console.log('pages glob');
-    const pages = getGlobFiles(pagesGlob);
+    const pages = await getGlobFiles(pagesGlob);
     console.log('node glob success');
     const directoryRoutes = await handle(pages);
     console.log('executed the directory routes');
