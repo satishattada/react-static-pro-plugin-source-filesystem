@@ -2,6 +2,7 @@ import nodePath from "path";
 import chokidar from "chokidar";
 import { pathJoin } from "react-static-pro-max";
 import { rebuildRoutes } from "react-static-pro-max/node";
+import { glob } from "glob";
 
 export default ({
   location,
@@ -37,6 +38,21 @@ export default ({
     } else {
       console.log("Importing routes from directory...");
       console.log(`Importing directory routes from: ${pagesGlob}`);
+    }
+
+    const getGlobFiles = async(path) => {
+      const folderNamedModules = await glob(path, {
+        ignore: {
+          ignored: p => {
+            const pp = p.parent
+            return !(p.isNamed(pp.name + '.ts') || p.isNamed(pp.name + '.js'))
+          },
+        },
+      })
+      console.log('{{{{{{{{{{folderNamedModules}}}}}}}}}}')
+      console.log(folderNamedModules)
+
+      return folderNamedModules;
     }
 
     const handle = (pages) =>
@@ -99,7 +115,7 @@ export default ({
         });
     }
     console.log('pages glob');
-    const pages = await nodeGlob(pagesGlob);
+    const pages = getGlobFiles(pagesGlob);
     console.log('node glob success');
     const directoryRoutes = await handle(pages);
     console.log('executed the directory routes');
@@ -108,16 +124,20 @@ export default ({
 });
 
 function nodeGlob(path, options = {}) {
-  console.log('Executing Node Glob');
-  const { glob } = require("glob");
-  return new Promise((resolve, reject) =>
-    glob(path, options, (err, files) => {
-      console.log('Executing Glob', files);
-      if (err) {
-        console.log('error in Executing Glob', err);
-        return reject(err);
-      }
-      resolve(files);
-    })
-  );
+
 }
+
+// function nodeGlob(path, options = {}) {
+//   console.log('Executing Node Glob');
+//   const { glob } = require("glob");
+//   return new Promise((resolve, reject) =>
+//     glob(path, options, (err, files) => {
+//       console.log('Executing Glob', files);
+//       if (err) {
+//         console.log('error in Executing Glob', err);
+//         return reject(err);
+//       }
+//       resolve(files);
+//     })
+//   );
+// }
