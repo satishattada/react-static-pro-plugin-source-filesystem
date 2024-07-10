@@ -45,7 +45,7 @@ export default ({
         ignore: {
           ignored: p => {
             const pp = p.parent
-            return !(p.isNamed(pp.name + '.ts') || p.isNamed(pp.name + '.js'))
+            return !(p.isNamed(pp.name + '.tsx') || p.isNamed(pp.name + '.js'))
           },
         },
       })
