@@ -30,7 +30,7 @@ export default ({
     const globExtensions = [...config.extensions, ...extensions]
       .map((ext) => `${ext.slice(1)}`) // cut off the period of the extension
       .join(","); // join them for the glob string
-    const pagesGlob = nodePath.join(location, `*.{${globExtensions}}`);
+    const pagesGlob = nodePath.join(location, '**', `*.{${globExtensions}}`);
     // Get the pages
 
     if (debug) {
