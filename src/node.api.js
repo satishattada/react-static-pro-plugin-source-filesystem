@@ -41,7 +41,10 @@ export default ({
     }
 
     const getGlobFiles = async(path) => {
-      const folderNamedModules = await glob(path);
+      console.log('{{{{{{{{{{path}}}}}}}}}}')
+      console.log(path)
+
+      const folderNamedModules = await glob(path, { ignore: 'node_modules/**' })
       console.log('{{{{{{{{{{folderNamedModules}}}}}}}}}}')
       console.log(folderNamedModules)
 
