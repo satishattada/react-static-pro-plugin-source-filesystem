@@ -1,6 +1,5 @@
 import nodePath from 'path'
 import chokidar from 'chokidar'
-import nodeGlob from 'glob'
 import { pathJoin } from 'react-static-pro-max'
 import { rebuildRoutes } from 'react-static-pro-max/node'
 
@@ -106,6 +105,7 @@ export default ({
 })
 
 function glob(path, options = {}) {
+  const nodeGlob = require("glob");
   return new Promise((resolve, reject) =>
     nodeGlob(path, options, (err, files) => {
       if (err) {
