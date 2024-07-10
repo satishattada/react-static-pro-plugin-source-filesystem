@@ -36,6 +36,7 @@ export default ({
       console.log(`Importing directory routes from: ${pagesGlob}`);
     } else {
       console.log("Importing routes from directory...");
+      console.log(`Importing directory routes from: ${pagesGlob}`);
     }
 
     const handle = (pages) =>
