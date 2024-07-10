@@ -37,19 +37,18 @@ export default ({
       console.log(`Importing directory routes from: ${pagesGlob}`);
     } else {
       console.log("Importing routes from directory...");
-      console.log(`Importing directory routes from: ${pagesGlob}`);
     }
 
-    const getGlobFiles = async(path) => {
-      console.log('{{{{{{{{{{path}}}}}}}}}}')
-      console.log(path)
+    // const getGlobFiles = async(path) => {
+    //   console.log('{{{{{{{{{{path}}}}}}}}}}')
+    //   console.log(path)
 
-      const folderNamedModules = await glob(path, { ignore: 'node_modules/**' })
-      console.log('{{{{{{{{{{folderNamedModules}}}}}}}}}}')
-      console.log(folderNamedModules)
+    //   const folderNamedModules = await glob(path, { ignore: 'node_modules/**' })
+    //   console.log('{{{{{{{{{{folderNamedModules}}}}}}}}}}')
+    //   console.log(folderNamedModules)
 
-      return folderNamedModules;
-    }
+    //   return folderNamedModules;
+    // }
 
     const handle = (pages) =>
       // Turn each page into a route
@@ -111,7 +110,7 @@ export default ({
         });
     }
     console.log('pages glob');
-    const pages = await getGlobFiles(pagesGlob);
+    const pages = await nodeGlob(pagesGlob);
     console.log('node glob success');
     const directoryRoutes = await handle(pages);
     console.log('executed the directory routes');
@@ -120,20 +119,16 @@ export default ({
 });
 
 function nodeGlob(path, options = {}) {
-
+  console.log('Executing Node Glob');
+  const glob = require("glob");
+  return new Promise((resolve, reject) =>
+    glob(path, options, (err, files) => {
+      console.log('Executing Glob', files);
+      if (err) {
+        console.log('error in Executing Glob', err);
+        return reject(err);
+      }
+      resolve(files);
+    })
+  );
 }
-
-// function nodeGlob(path, options = {}) {
-//   console.log('Executing Node Glob');
-//   const { glob } = require("glob");
-//   return new Promise((resolve, reject) =>
-//     glob(path, options, (err, files) => {
-//       console.log('Executing Glob', files);
-//       if (err) {
-//         console.log('error in Executing Glob', err);
-//         return reject(err);
-//       }
-//       resolve(files);
-//     })
-//   );
-// }
