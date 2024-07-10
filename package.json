@@ -18,13 +18,13 @@
     "react-static-pro-max": "^1.15.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "react-static-pro-max": "^1.15.0"
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "react-static-pro-max": "^1.19.0"
   },
   "dependencies": {
-    "chokidar": "^3.0.2",
-    "glob": "^7.1.4"
+    "chokidar": "^3.6.0",
+    "glob": "^11.0.0"
   }
 }
