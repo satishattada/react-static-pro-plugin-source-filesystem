@@ -15,7 +15,7 @@
     "preversion": "yarn build"
   },
   "peerDependencies": {
-    "react-static-pro-max": "^1.15.0"
+    "react-static-pro-max": "^1.19.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.7",
