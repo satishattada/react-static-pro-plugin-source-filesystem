@@ -1,5 +1,6 @@
 import nodePath from "path";
 import chokidar from "chokidar";
+import { glob } from "glob";
 import { pathJoin } from "react-static-pro-max";
 import { rebuildRoutes } from "react-static-pro-max/node";
 
@@ -97,15 +98,14 @@ export default ({
         });
     }
 
-    const pages = await glob(pagesGlob);
+    const pages = await nodeGlob(pagesGlob);
     const directoryRoutes = await handle(pages);
 
     return [...routes, ...directoryRoutes];
   },
 });
 
-function glob(path, options = {}) {
-  const { glob } = require("glob");
+function nodeGlob(path, options = {}) {
   return new Promise((resolve, reject) =>
     glob(path, options, (err, files) => {
       if (err) {
