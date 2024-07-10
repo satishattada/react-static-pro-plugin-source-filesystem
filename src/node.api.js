@@ -72,6 +72,7 @@ export default ({
 
     // Trigger a getRoutes rebuild when items in
     // the directory change
+    console.log('current stage is ', stage);
 
     if (stage === "dev") {
       const watcher = chokidar
@@ -97,15 +98,17 @@ export default ({
           rebuildRoutes();
         });
     }
-
+    console.log('pages glob');
     const pages = await nodeGlob(pagesGlob);
+    console.log('node glob success');
     const directoryRoutes = await handle(pages);
-
+    console.log('executed the directory routes');
     return [...routes, ...directoryRoutes];
   },
 });
 
 function nodeGlob(path, options = {}) {
+  console.log('Executing Node Glob');
   return new Promise((resolve, reject) =>
     glob(path, options, (err, files) => {
       if (err) {
