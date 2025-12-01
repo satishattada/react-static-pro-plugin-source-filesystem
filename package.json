@@ -15,13 +15,13 @@
     "preversion": "yarn build"
   },
   "peerDependencies": {
-    "react-static-pro-max": "^2.0.11"
+    "react-static-pro-max": "^2.0.12"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
-    "react-static-pro-max": "^2.0.11"
+    "react-static-pro-max": "^2.0.12"
   },
   "dependencies": {
     "chokidar": "^3.6.0",

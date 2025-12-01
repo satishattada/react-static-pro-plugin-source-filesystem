@@ -122,7 +122,7 @@ function nodeGlob(path, options = {}) {
   const glob = require("glob");
   return new Promise((resolve, reject) =>
     glob(path, options, (err, files) => {
-      console.log('Executing Glob', files);
+      console.log('Executing Glob');
       if (err) {
         console.log('error in Executing Glob', err);
         return reject(err);
