@@ -119,15 +119,6 @@ export default ({
 
 function nodeGlob(path, options = {}) {
   console.log('Executing Node Glob');
-  const glob = require("glob");
-  return new Promise((resolve, reject) =>
-    glob(path, options, (err, files) => {
-      console.log('Executing Glob');
-      if (err) {
-        console.log('error in Executing Glob', err);
-        return reject(err);
-      }
-      resolve(files);
-    })
-  );
+  const { glob } = require("glob");
+  return glob(path, options);
 }
